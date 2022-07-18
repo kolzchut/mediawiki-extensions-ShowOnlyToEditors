@@ -1,0 +1,34 @@
+{
+	"name": "ShowOnlyToEditors",
+	"author": [
+		"Dror S. [FFS] ([http://www.kolzchut.org.il Kol-Zchut])"
+	],
+	"url": "https://github.com/kolzchut/mediawiki-extensions-showOnlyToEditors",
+	"descriptionmsg": "showonlytoeditors-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "parserhook",
+	"version": "0.1.0",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\ShowOnlyToEditors\\": "src/"
+	},
+	"HookHandlers": {
+		"ShowOnlyToEditorsHooks": {
+			"class": "MediaWiki\\Extension\\ShowOnlyToEditors\\Hooks"
+		}
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "ShowOnlyToEditorsHooks"
+	},
+	"MessagesDirs": {
+		"ShowOnlyToEditors": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"ShowOnlyToEditorsMagic": "ShowOnlyToEditors.i18n.magic.php"
+	},
+	"manifest_version": 2
+}
