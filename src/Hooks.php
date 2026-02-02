@@ -19,6 +19,7 @@
 
 namespace MediaWiki\Extension\ShowOnlyToEditors;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use Parser;
@@ -52,9 +53,8 @@ class Hooks implements
 	 *
 	 * @return string HTML to insert in the page.
 	 */
-	public static function parserFunctionShowOnlyToEditors( Parser $parser, string $text
-	): string {
-		$user = $parser->getUser();
+	public static function parserFunctionShowOnlyToEditors( Parser $parser, string $text ): string {
+		$user = RequestContext::getMain()->getUser();
 		return self::userIsEditor( $user ) ? $text : '';
 	}
 
