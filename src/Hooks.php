@@ -69,7 +69,6 @@ class Hooks implements
 	 *
 	 * @return void True or no return value to continue or false to abort
 	 * @since 1.35
-	 *
 	 */
 	public function onPageRenderingHash( &$confstr, $user, &$forOptions ) {
 		if ( self::userIsEditor( $user ) ) {
