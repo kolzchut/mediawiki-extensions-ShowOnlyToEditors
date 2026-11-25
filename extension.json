@@ -20,7 +20,8 @@
 		}
 	},
 	"Hooks": {
-		"ParserFirstCallInit": "ShowOnlyToEditorsHooks"
+		"ParserFirstCallInit": "ShowOnlyToEditorsHooks",
+		"PageRenderingHash": "ShowOnlyToEditorsHooks"
 	},
 	"MessagesDirs": {
 		"ShowOnlyToEditors": [

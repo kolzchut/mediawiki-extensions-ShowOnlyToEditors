@@ -19,7 +19,6 @@
 
 namespace MediaWiki\Extension\ShowOnlyToEditors;
 
-use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use Parser;
@@ -54,7 +53,11 @@ class Hooks implements
 	 * @return string HTML to insert in the page.
 	 */
 	public static function parserFunctionShowOnlyToEditors( Parser $parser, string $text ): string {
-		$user = RequestContext::getMain()->getUser();
+		// Decide by the user the parser options were made for, not the user making the
+		// web request: the parser cache key is built from the options' user (see
+		// onPageRenderingHash), and core renders other users' copies inside a request,
+		// e.g. the anonymous copy when an editor saves a page.
+		$user = $parser->getOptions()->getUserIdentity();
 		return self::userIsEditor( $user ) ? $text : '';
 	}
 
